@@ -16,7 +16,7 @@ namespace ConsoleUI
             //carManager.Delete(new Car { Id = 6 });
             //carManager.Update(new Car { Id = 7, BrandId = 1, ColorId = 1, DailyPrice = 2550, Name = "BMW", ModelYear = 2022, Description = "3.20" });
 
-            //carManager.GetById(6);
+            carManager.GetById(6);
             TestCarDetails();
         }
 
