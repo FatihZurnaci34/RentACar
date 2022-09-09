@@ -29,5 +29,12 @@ namespace Business.Constans
         public static string ColorUpdated = "Renk Güncellendi";
         public static string ColorListed = "Renk Listelendi";
         public static string ColorListById = "İstenilen Renk getirildi";
+
+        // Customer için mesajlar
+        public static string CustomerAdded = "Müşteri Eklendi";
+        public static string CustomerDeleted = "Müşteri Silindi";
+        public static string CustomerUpdated = "Müşteri Güncellendi";
+        public static string CustomerListed = "Müşteriler Listelendi";
+        public static string CustomerListById = "İstenilen Müşteri getirildi";
     }
 }
