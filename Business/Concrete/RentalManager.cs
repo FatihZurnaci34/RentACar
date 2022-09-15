@@ -25,6 +25,7 @@ namespace Business.Concrete
                 _rentalDal.Add(rental);
                 return new SuccessResult();
             }
+            
             return new ErrorResult("Araç Kiralanmış");
         }
 
@@ -33,6 +34,12 @@ namespace Business.Concrete
         {
             _rentalDal.Delete(rental);
             return new SuccessResult();
+        }
+
+        public IResult Deliver(Rental rental)
+        {
+            _rentalDal.Deliver(rental);
+            return new SuccessResult("Araç Teslim Edildi.");
         }
 
         public IDataResult<List<Rental>> GetAll()

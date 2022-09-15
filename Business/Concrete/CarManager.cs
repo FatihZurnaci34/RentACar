@@ -18,9 +18,20 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-
         public IResult Add(Car car)
         {
+            if (car.Name.Length < 2)
+            {
+                return new ErrorResult("Arabanın ismi 2 den küçük olamaz");
+            }
+            if (car.Description.Length<1)
+            {
+                return new ErrorResult("Arabanın açıklaması boş geçilemez");
+            }
+            if (car.DailyPrice < 100)
+            {
+                return new ErrorResult("Arabanın açıklaması boş geçilemez");
+            }
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }
