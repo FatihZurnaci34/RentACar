@@ -10,7 +10,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=LAPTOP-5F5NMLQ9\SQLEXPRESS;Database=RentACar;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=FZURNACI\SQLEXPRESS;Database=RentACar;Trusted_Connection=true");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         //Burası çok önemli, Customer classı User'dan İnherit ediliyor, belirtilmez ise Db tabloları otomatik olarak karışacaktır
@@ -25,5 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Rental> Rentals { get; set; }
+        public DbSet<PopularCar> PopularCars { get; set; }
+        public DbSet<CarImage> CarImages { get; set; }
     }
 }

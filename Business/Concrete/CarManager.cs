@@ -42,9 +42,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarDeleted);
         }
 
-        public IDataResult< List<Car>> GetAll()
+        public  IDataResult<List<Car>> GetAll()
         {
-            return new  SuccessDataResult<List<Car>>( _carDal.GetAll(),Messages.CarListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
 
         }
 
