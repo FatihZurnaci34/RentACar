@@ -1,4 +1,5 @@
-﻿@model Entities.DTOs.PopularCarDto
+﻿@using Entities.DTOs
+@model List<PopularCarDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -44,13 +45,15 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item active"><a href="/rentacarhome/index" class="nav-link">Anasayfa</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                    <li class="nav-item"><a href="car.html" class="nav-link">Cars</a></li>
+                    <li class="nav-item"><a href="pricing.html" class="nav-link">Kiralama</a></li>
+                    <li class="nav-item"><a href="/car/index" class="nav-link">Arabalarımız</a></li>
                     <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">İletişim</a></li>
+                    <li class="nav-item"><a href="/register/index" class="nav-link">Kayıt</a></li>
+                    <li class="nav-item"><a href="/login/index" class="nav-link">Giriş</a></li>
                 </ul>
             </div>
         </div>
@@ -156,30 +159,33 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-                    <span class="subheading">What we offer</span>
-                    <h2 class="mb-2">Feeatured Vehicles</h2>
+                    <span class="subheading">TEKLİFİMİZ</span>
+                    <h2 class="mb-2">Popüler Araçlarımız</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="carousel-car owl-carousel">
+                        @foreach (var item in Model)
+                        {
                         <div class="item">
                             <div class="car-wrap rounded ftco-animate">
+                                
                                 <div class="img rounded d-flex align-items-end" style="background-image: url(/temp/images/car-1.jpg);">
                                 </div>
-                                @foreach (var item in Model.CarName)
-                                {
+                                
                                     <div class="text">
-                                        <h2 class="mb-0"><a href="#">Mercedes Grand Sedan</a></h2>
+                                        <h2 class="mb-0"><a href="#">@item.BrandName</a></h2>
                                         <div class="d-flex mb-3">
-                                            <span class="cat">@item</span>
-                                            <p class="price ml-auto">$500 <span>/day</span></p>
+                                            <span class="cat">@item.CarName </span>
+                                            <p class="price ml-auto">@item.DailyPrice TL <span>/gün</span></p>
                                         </div>
-                                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Kirala</a> <a href="#" class="btn btn-secondary py-2 ml-1">Detaylar</a></p>
                                     </div>
-                                }
+                               
                             </div>
                         </div>
+                         }
                     </div>
                 </div>
             </div>
