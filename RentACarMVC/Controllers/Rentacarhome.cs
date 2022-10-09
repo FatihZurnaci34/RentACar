@@ -1,8 +1,12 @@
 ﻿using Business.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RentACarMVC.Controllers
 {
+
+
+    [Authorize]
     public class Rentacarhome : Controller
     {
         IPopularCarService _popularCarService;

@@ -6,6 +6,7 @@ namespace Business.Constans
 {
     public static class Messages
     {
+
         // Car için mesajlar 
         public static string CarAdded = "Araba Eklendi";
         public static string CarDeleted = "Araba Silindi";
@@ -15,6 +16,9 @@ namespace Business.Constans
         public static string CarListAllByColorId = "Renge göre bütün arabalar listelendi";
         public static string CarListAllByBrandId = "Modele göre bütün arabalar listelendi";
         public static string CarGetById = "İstenilen araba getirildi";
+        public static string CarCountOfBrandError = "Bu kategorimizde en fazla 10 tane araba olabilir";
+        public static string CarNameAlreadyExits="Bu isimde başka bir araba var";
+
 
         // Brand için  mesajlar
         public static string BrandAdded = "Model Eklendi";
@@ -36,5 +40,6 @@ namespace Business.Constans
         public static string CustomerUpdated = "Müşteri Güncellendi";
         public static string CustomerListed = "Müşteriler Listelendi";
         public static string CustomerListById = "İstenilen Müşteri getirildi";
+
     }
 }

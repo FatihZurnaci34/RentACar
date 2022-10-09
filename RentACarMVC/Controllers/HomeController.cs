@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RentACarMVC.Models;
@@ -33,6 +34,7 @@ namespace RentACarMVC.Controllers
 
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();
