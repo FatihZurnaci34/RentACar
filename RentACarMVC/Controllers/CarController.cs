@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RentACarMVC.Controllers
@@ -21,5 +22,22 @@ namespace RentACarMVC.Controllers
             }
             return BadRequest(result.Data);
         }
+
+        public IActionResult Index1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Car car)
+        {
+            var result = _carService.Add(car);
+            if (result.Success)
+            {
+                return RedirectToAction("Index", "Car");
+            }
+            return View();
+        }
     }
 }
+
