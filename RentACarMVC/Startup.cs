@@ -1,3 +1,4 @@
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract;
@@ -30,6 +31,7 @@ namespace RentACarMVC
 
            
             services.AddControllersWithViews();
+            services.AddAutoMapper(typeof(Startup));
             //services.AddSingleton<ICarService, CarManager>();
             //services.AddSingleton<ICarDal, EfCarDal>();
             //services.AddSingleton<IBrandService, BrandManager>();

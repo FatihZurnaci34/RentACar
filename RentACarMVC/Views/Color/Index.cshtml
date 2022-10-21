@@ -1,0 +1,56 @@
+﻿@using Entities.Concrete
+@model List<Color>
+
+<style>
+    #product-li-row-texts {
+        text-align: center;
+        font-weight: bold;
+        justify-content: center;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-left: 2px;
+        margin: -5px;
+    }
+</style>
+
+
+
+<div class="productSaveBar">
+    <div class="productSaveButton"><div style="margin-top:5px;" class="product-li-row-text"><a href="AddPage"><button class="buttonx" style="width:100px; "><span>Ekle</span></button></a></div></div>
+
+    <div class="productSaveText"><p class="p">Renkler</p></div>
+
+</div>
+
+
+
+<div class="anaDiv">
+
+
+
+    @foreach (var color in Model)
+    {
+
+        <div class="urunDiv">
+            <div class="imgDiv" style="width:500px;">
+                <ul class="product-ul">
+                    <li class="product-ul-li">
+                        <div class="product-li-row">
+                            <div class="product-li-row-text" id="product-li-row-texts">
+                                <div style="width:350px; height:40px; text-align:center; margin-top:5px;">@color.Name <a href="UpdatePage"> Güncelle </a></div>
+                            </div>
+
+
+                        </div>
+                    </li>
+
+
+
+
+                </ul>
+            </div>
+        </div>
+
+    }
+</div>

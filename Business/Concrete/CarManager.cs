@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Business.Constans;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -8,6 +9,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using Entities.ViewModels;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -20,10 +22,12 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
+        IMapper _mapper;
 
-        public CarManager(ICarDal carDal)
+        public CarManager(ICarDal carDal, IMapper mapper = null)
         {
             _carDal = carDal;
+            _mapper = mapper;
         }
 
         [ValidationAspect(typeof(CarValidator))]
@@ -35,7 +39,6 @@ namespace Business.Concrete
             {
                 return null;
             }
-
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }

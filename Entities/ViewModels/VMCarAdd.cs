@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.ViewModels
 {
-    public class CarAddVM
+    public class VMCarAdd
     {
         public string Name { get; set; }
         public short ModelYear { get; set; }

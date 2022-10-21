@@ -1,0 +1,33 @@
+﻿@model Entities.ViewModels.VMColorUpdate
+
+<div style="width:auto; height:auto">
+
+    @using (Html.BeginForm("Update", "Color", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="productSaveBar">
+            <div class="productSaveButton"><div style="margin-top:5px;" class="product-li-row-text"><a href="/Color/Index" class="buttonx" style="  background-color: rgba(192, 29, 29, 0.963) "><span>İptal Et <i class="fa-solid fa-xmark"></i></span></a></div></div>
+            <div class="productSaveButton"><div style="margin-top:5px;" class="product-li-row-text"><button class="buttonx"><span>Kaydet <i class="fa-regular fa-square-check"></i></span></button></div></div>
+            <div class="productSaveText"><p class="p">Renk Düzenleme</p></div>
+        </div>
+
+        <div class="form-groupAdd">
+            <ul>
+                <li style="display:flex;">
+
+                    <div class="liLabelDivAdd">
+                        @Html.Label("Renk Adı: ")
+                    </div>
+
+                    <div class="liTextBoxDivAdd">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-controlAdd" })
+                    </div>
+                    <div>@Html.ValidationMessageFor(m => m.Name, "", new { @class = "error" })</div>
+                </li>
+
+            </ul>
+        </div>
+    }
+
+
+</div>
