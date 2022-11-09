@@ -3,10 +3,12 @@ using Business.Abstract;
 using Entities.Concrete;
 using Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using RentACarMVC.Models;
 using System.Collections.Generic;
 
 namespace RentACarMVC.Controllers
 {
+
     public class CarController : Controller
     {
         private readonly ICarService _carService;
@@ -27,7 +29,6 @@ namespace RentACarMVC.Controllers
             }
             return BadRequest(result.Data);
         }
-
         public IActionResult AddPage()
         {
             return View();
@@ -56,7 +57,7 @@ namespace RentACarMVC.Controllers
         [HttpPost]
         public IActionResult Delete(Car car)
         {
-
+            
             _carService.Delete(car);
             return RedirectToAction("Index", "Car");
         }

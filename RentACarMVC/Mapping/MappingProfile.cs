@@ -22,7 +22,7 @@ namespace RentACarMVC.Mapping
             CreateMap<VMColorList, Color>();
             CreateMap<VMColorDelete, Color>();
             CreateMap<VMColorAdd, Color>();
-            CreateMap<VMCarUpdate, Color>();
+            CreateMap<VMColorUpdate, Color>();
 
         }
     }
