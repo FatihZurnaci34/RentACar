@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
 using Business.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RentACarMVC.Models;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Net;
 
 namespace RentACarMVC.Controllers
 {
@@ -47,18 +51,26 @@ namespace RentACarMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(VMCarUpdate car)
+        public IActionResult Update(VMCarUpdate car,int id)
         {
-            var updateCar = _mapper.Map<Car>(car);
-            _carService.Update(updateCar);
-            return RedirectToAction("Index", "Car");
+            Common obj = new Common();
+            string temp = obj.PutData("https://localhost:44316/api/cars/add" , car , id);
+
+            var input = JsonConvert.SerializeObject(car, Newtonsoft.Json.Formatting.Indented);
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]
-        public IActionResult Delete(Car car)
+        public IActionResult Delete(int id)
         {
-            
-            _carService.Delete(car);
+            RentACarContext db = new RentACarContext();
+            var aaa = db.Cars.Find(id);
+            WebRequest request = WebRequest.Create("https://localhost:44316/api/brands/delete" + aaa.Id);
+            request.Method = "DELETE";
+
+            WebResponse response = request.GetResponse();
+
             return RedirectToAction("Index", "Car");
         }
 

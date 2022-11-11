@@ -93,7 +93,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
 
         public IActionResult Delete(Car car)
         {
@@ -105,10 +105,18 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
-
-        public IActionResult Update(Car car)
+        [Route("update")]
+        [HttpPut]
+        public IActionResult Update([FromBody] VMCarUpdate vm)
         {
+            Car car = new Car();
+            car.Name = vm.data.Name;
+            car.DailyPrice = vm.data.DailyPrice;
+            car.Description = vm.data.Description;
+            car.ModelYear = vm.data.ModelYear;
+            car.BrandId = vm.data.BrandId;
+            car.ColorId = vm.data.ColorId;
+
             var result = _carService.Update(car);
             if (result.Success)
             {

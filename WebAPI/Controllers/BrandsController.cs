@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Entities.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,10 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
+    
     [Route("api/[controller]")]
-    [ApiController]
-    public class BrandsController : ControllerBase
+    
+    public class BrandsController : Controller
     {
         IBrandService _brandService;
 
@@ -44,10 +47,13 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("add")]
+        [Route("add")]
+        [HttpPost]
 
-        public IActionResult Add(Brand brand)
+        public IActionResult Add([FromBody]VMBrandAdd vm)
         {
+            Brand brand = new Brand();
+            brand.Name = vm.data.name;
             var result = _brandService.Add(brand);
             if (result.Success)
             {
@@ -56,7 +62,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
 
         public IActionResult Delete(Brand brand)
         {

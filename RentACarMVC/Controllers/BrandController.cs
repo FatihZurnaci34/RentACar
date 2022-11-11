@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using Entities.ViewModels;
+using System.IO;
+using System.Net;
+using System.Security.Policy;
+using System.Text;
 
 namespace RentACarMVC.Controllers
 {
-    public class BrandController:Controller
+    public class BrandController : Controller
     {
         public ActionResult Index()
         {
@@ -23,7 +27,34 @@ namespace RentACarMVC.Controllers
             return View(data);
         }
 
-    }
+        public ActionResult AddPage()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(VMBrandAdd brand)
+        {
 
-    
+            Common obj = new Common();
+            string temp = obj.PostData("https://localhost:44316/api/brands/add", brand);
+
+
+            var input = JsonConvert.SerializeObject(brand, Newtonsoft.Json.Formatting.Indented);
+
+            return RedirectToAction(nameof(Index));
+
+        }
+
+        [HttpPost]
+        public IActionResult Delete(string id)
+        {
+            WebRequest request = WebRequest.Create("https://localhost:44316/api/brands/add" + id);
+            request.Method = "DELETE";
+
+            WebResponse response = request.GetResponse();
+            return View();
+        }
+
+
+    }
 }

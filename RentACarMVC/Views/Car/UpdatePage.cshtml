@@ -1,4 +1,4 @@
-﻿@model Entities.Concrete.Car
+﻿@model Entities.ViewModels.VMCarUpdate
 
 <h4>Araba düzenle</h4>
 <hr />
@@ -8,34 +8,34 @@
             <td colspan="3"><div asp-validation-summary="All"></div></td>
         </tr>
         <tr>
-            <td><label asp-for="Name"></label></td>
-            <td><input asp-for="Name" /></td>
-            <td><span asp-validation-for="Name"></span></td>
+            <td><label asp-for="data.Name"></label></td>
+            <td><input asp-for="data.Name" /></td>
+            <td><span asp-validation-for="data.Name"></span></td>
         </tr>
         <tr>
-            <td><label asp-for="ModelYear"></label></td>
-            <td><input asp-for="ModelYear" /></td>
-            <td><span asp-validation-for="ModelYear"></span></td>
+            <td><label asp-for="data.ModelYear"></label></td>
+            <td><input asp-for="data.ModelYear" /></td>
+            <td><span asp-validation-for="data.ModelYear"></span></td>
         </tr>
         <tr>
-            <td><label asp-for="DailyPrice"></label></td>
-            <td><input asp-for="DailyPrice" /></td>
-            <td><span asp-validation-for="DailyPrice"></span></td>
+            <td><label asp-for="data.DailyPrice"></label></td>
+            <td><input asp-for="data.DailyPrice" /></td>
+            <td><span asp-validation-for="data.DailyPrice"></span></td>
         </tr>
         <tr>
-            <td><label asp-for="Description"></label></td>
-            <td><input asp-for="Description" /></td>
-            <td><span asp-validation-for="Description"></span></td>
+            <td><label asp-for="data.Description"></label></td>
+            <td><input asp-for="data.Description" /></td>
+            <td><span asp-validation-for="data.Description"></span></td>
         </tr>
         <tr>
-            <td><label asp-for="BrandId"></label></td>
-            <td><input asp-for="BrandId" /></td>
-            <td><span asp-validation-for="BrandId"></span></td>
+            <td><label asp-for="data.BrandId"></label></td>
+            <td><input asp-for="data.BrandId" /></td>
+            <td><span asp-validation-for="data.BrandId"></span></td>
         </tr>
         <tr>
-            <td><label asp-for="ColorId"></label></td>
-            <td><input asp-for="ColorId" /></td>
-            <td><span asp-validation-for="ColorId"></span></td>
+            <td><label asp-for="data.ColorId"></label></td>
+            <td><input asp-for="data.ColorId" /></td>
+            <td><span asp-validation-for="data.ColorId"></span></td>
         </tr>
         <tr>
             <td colspan="3"><input type="submit" value="Düzenle" /></td>

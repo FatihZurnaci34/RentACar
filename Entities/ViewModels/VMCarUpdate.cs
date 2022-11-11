@@ -8,6 +8,12 @@ namespace Entities.ViewModels
 {
     public class VMCarUpdate
     {
+        public VMCar data { get; set; }
+    }
+
+    public class VMCar
+    {
+        public int Id { get; set; }
         public string Name { get; set; }
         public short ModelYear { get; set; }
         public decimal DailyPrice { get; set; }
