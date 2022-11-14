@@ -92,10 +92,10 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [Route("delete")]
+        [HttpPost]
 
-        [HttpDelete("delete")]
-
-        public IActionResult Delete(Car car)
+        public IActionResult Delete([FromBody]Car car)
         {
             var result = _carService.Delete(car);
             if (result.Success)
@@ -106,17 +106,9 @@ namespace WebAPI.Controllers
         }
 
         [Route("update")]
-        [HttpPut]
-        public IActionResult Update([FromBody] VMCarUpdate vm)
+        [HttpPost]
+        public IActionResult Update([FromBody] Car car)
         {
-            Car car = new Car();
-            car.Name = vm.data.Name;
-            car.DailyPrice = vm.data.DailyPrice;
-            car.Description = vm.data.Description;
-            car.ModelYear = vm.data.ModelYear;
-            car.BrandId = vm.data.BrandId;
-            car.ColorId = vm.data.ColorId;
-
             var result = _carService.Update(car);
             if (result.Success)
             {

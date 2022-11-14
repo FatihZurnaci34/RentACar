@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using RentACarMVC.Models;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Net;
 
 namespace RentACarMVC.Controllers
@@ -44,34 +45,30 @@ namespace RentACarMVC.Controllers
             _carService.Add(addCar);
             return RedirectToAction("Index", "Car");
         }
-
-        public IActionResult UpdatePage()
+        [HttpGet]
+        public IActionResult Update()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Update(VMCarUpdate car,int id)
+        public IActionResult Update(Car car)
         {
             Common obj = new Common();
-            string temp = obj.PutData("https://localhost:44316/api/cars/add" , car , id);
-
+            string temp = obj.PutData("https://localhost:44316/api/cars/update" ,car);
             var input = JsonConvert.SerializeObject(car, Newtonsoft.Json.Formatting.Indented);
 
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Car car)
         {
-            RentACarContext db = new RentACarContext();
-            var aaa = db.Cars.Find(id);
-            WebRequest request = WebRequest.Create("https://localhost:44316/api/brands/delete" + aaa.Id);
-            request.Method = "DELETE";
 
-            WebResponse response = request.GetResponse();
+            Common cmn = new Common();
+            string temp = cmn.DeleteData("https://localhost:44316/api/cars/delete",car);
+            var input = JsonConvert.SerializeObject(car, Newtonsoft.Json.Formatting.Indented);
 
-            return RedirectToAction("Index", "Car");
+            return RedirectToAction(nameof(Index));
         }
 
     }
