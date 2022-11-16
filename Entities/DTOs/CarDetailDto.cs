@@ -4,6 +4,11 @@ using System.Text;
 
 namespace Entities.DTOs
 {
+
+    public class GetCarDetailDto
+    {
+        public List<CarDetailDto> data { get; set; }
+    }
     public class CarDetailDto
     {
         public int Id { get; set; }

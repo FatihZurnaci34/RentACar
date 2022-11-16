@@ -1,5 +1,5 @@
 ﻿@using Entities.DTOs
-@model List<CarDetailDto>
+@model GetCarDetailDto
 <!DOCTYPE html>
 @{
     ViewData["Title"] = "Index";
@@ -77,7 +77,7 @@
     <section class="ftco-section bg-light">
         <div class="container">
             <div class="row">
-               @foreach (var item in Model)
+               @foreach (CarDetailDto item in Model.data)
                {             
                 <div class="col-md-4">
                     <div class="car-wrap rounded ftco-animate">

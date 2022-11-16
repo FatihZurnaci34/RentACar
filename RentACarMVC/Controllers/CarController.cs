@@ -2,9 +2,11 @@
 using Business.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RentACarMVC.Data;
 using RentACarMVC.Models;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
@@ -27,12 +29,12 @@ namespace RentACarMVC.Controllers
 
         public IActionResult Index()
         {
-            var result = _carService.GetCarDetails();
-            if (result.Success)
-            {
-                return View(result.Data);
-            }
-            return BadRequest(result.Data);
+            Common obj = new Common();
+            string temp = obj.GetData("https://localhost:44316/api/cars/getcardetails");
+
+            GetCarDetailDto data = JsonConvert.DeserializeObject<GetCarDetailDto>(temp);
+
+            return View(data);
         }
         public IActionResult AddPage()
         {
@@ -41,14 +43,17 @@ namespace RentACarMVC.Controllers
         [HttpPost]
         public IActionResult Add(VMCarAdd car)
         {
-            var addCar = _mapper.Map<Car>(car);
-            _carService.Add(addCar);
+            //var addCar = _mapper.Map<Car>(car);
+            Common obj = new Common();
+            string temp = obj.CarPostData("https://localhost:44316/api/cars/add", car);
             return RedirectToAction("Index", "Car");
         }
         [HttpGet]
-        public IActionResult Update()
+        public IActionResult Update(int id)
         {
-            return View();
+            RentACarContext db = new RentACarContext();
+            Car car = db.Cars.Find(id);
+            return View(car);
         }
 
         [HttpPost]

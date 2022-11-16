@@ -23,15 +23,15 @@ namespace WebAPI.Controllers
 
         [HttpGet("getall")]
 
-        //public IActionResult GetAll()
-        //{
-        //    var result = _carService.GetAll();
-        //    if (result.Success)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    return BadRequest(result);
-        //}
+        public IActionResult GetAll()
+        {
+            var result = _carService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpGet("getbyid")]
 
@@ -83,8 +83,15 @@ namespace WebAPI.Controllers
 
         [HttpPost("add")]
 
-        public IActionResult Add(Car car)
+        public IActionResult Add(VMCarAdd vmCar)
         {
+            Car car = new Car();
+            car.Name = vmCar.Name;
+            car.BrandId = vmCar.BrandId;
+            car.ModelYear = vmCar.ModelYear;
+            car.ColorId = vmCar.ColorId;
+            car.Description = vmCar.Description;
+            car.DailyPrice = vmCar.DailyPrice;
             var result = _carService.Add(car);
             if (result.Success)
             {

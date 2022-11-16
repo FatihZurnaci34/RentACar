@@ -58,6 +58,32 @@ namespace RentACarMVC
             return temp;
         }
 
+        public string CarPostData(string url, VMCarAdd car)
+        {
+            string temp = "";
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+
+            using (Stream requestStream = request.GetRequestStream())
+            using (StreamWriter writer = new StreamWriter(requestStream, Encoding.ASCII))
+            {
+                writer.Write(JsonConvert.SerializeObject(car));
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            Stream responseStream = response.GetResponseStream();
+
+            using (StreamReader reader = new StreamReader(responseStream))
+            {
+                temp = reader.ReadToEnd();
+            }
+
+            return temp;
+        }
+
         public string DeleteData(string url,Car car)
         {
             string temp = "";

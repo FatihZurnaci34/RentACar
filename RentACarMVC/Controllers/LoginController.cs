@@ -17,7 +17,7 @@ namespace RentACarMVC.Controllers
         {
             using (RentACarContext context = new RentACarContext())
             {
-                var pUser = context.Users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
+                var pUser = context.Users.FirstOrDefault(x => x.Email == user.Email /*&& x.Password == user.Password*/);
 
                 if (pUser != null)
                 {
