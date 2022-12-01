@@ -99,9 +99,9 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
         [Route("delete")]
         [HttpPost]
-
         public IActionResult Delete([FromBody]Car car)
         {
             var result = _carService.Delete(car);
