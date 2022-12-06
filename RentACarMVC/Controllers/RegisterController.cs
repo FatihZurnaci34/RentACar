@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Entity;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;

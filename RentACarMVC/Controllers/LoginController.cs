@@ -1,4 +1,5 @@
-﻿using DataAccess.Concrete.EntityFramework;
+﻿using Core.Entity;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;

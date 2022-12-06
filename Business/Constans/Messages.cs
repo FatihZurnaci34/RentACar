@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constans
@@ -40,6 +41,6 @@ namespace Business.Constans
         public static string CustomerUpdated = "Müşteri Güncellendi";
         public static string CustomerListed = "Müşteriler Listelendi";
         public static string CustomerListById = "İstenilen Müşteri getirildi";
-
+        public static string AuthorizationDenied = "Yetkiniz yok";
     }
 }
