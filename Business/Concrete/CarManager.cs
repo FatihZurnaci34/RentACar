@@ -4,6 +4,7 @@ using Business.BusinessAspect.Autofac;
 using Business.Constans;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
@@ -36,6 +37,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))]
         [SecuredOperation("car.add,admin")]
         [CacheRemoveAspect("ICarService.Get")]
+        [PerformanceAspect(5)]//Method 5sn den geç çalışırsa bizi uyarır interceptorsa verirsek bütün metodlarda çalışır.
         public IResult Add(Car car)
         {
             IResult result = BusinessRules.Run(CheckIfCarCountOfBrandCorrect(car.BrandId),
