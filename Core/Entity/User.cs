@@ -5,7 +5,6 @@ using System.Text;
 
 namespace Core.Entity
 {
-    //s
     public class User:IEntity
     {
         public int Id { get; set; }
