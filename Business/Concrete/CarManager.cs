@@ -4,6 +4,7 @@ using Business.BusinessAspect.Autofac;
 using Business.Constans;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
@@ -81,6 +82,18 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == id), Messages.CarListAllByColorId);
+        }
+        [TransactionScopeAspect]
+        public IResult TransactionalTest(Car car)
+        {
+            Add(car);
+            if (car.DailyPrice<100)
+            {
+                throw new Exception();
+            }
+            Add(car);
+            return null;
+            //İşlem yarısında hata alırsa değişiklik veri tabanına yansımaz geri alınır.
         }
 
         [CacheRemoveAspect("ICarService.Get")]
