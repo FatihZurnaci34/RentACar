@@ -20,9 +20,9 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from c in context.Cars
                              join b in context.Brands on c.BrandId equals b.Id
                              join co in context.Colors on c.ColorId equals co.Id
-                             //join img in context.CarImages on c.Id equals img.CarId
-                             from img in context.CarImages
-                             join car in context.Cars on img.CarId equals car.Id
+                             join img in context.CarImages on c.Id equals img.CarId
+                             //from img in context.CarImages
+                             //join car in context.Cars on img.CarId equals car.Id
                              select new CarDetailDto
                              {
                                  Id = c.Id,
@@ -48,9 +48,9 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from c in context.Cars
                              join b in context.Brands on c.BrandId equals b.Id
                              join co in context.Colors on c.ColorId equals co.Id
-                             //join img in context.CarImages on c.Id equals img.CarId
-                             from img in context.CarImages
-                             join car in context.Cars on img.CarId equals car.Id
+                             join img in context.CarImages on c.Id equals img.CarId
+                             //from img in context.CarImages
+                             //join car in context.Cars on img.CarId equals car.Id
                              select new CarDetailDto
                              {
                                  Id = c.Id,
