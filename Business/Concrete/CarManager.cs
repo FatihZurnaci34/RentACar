@@ -65,9 +65,9 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<Car> GetById(int id)
+        public IDataResult<CarDetailDto> GetById(int id)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == id), Messages.CarGetById);
+            return new SuccessDataResult<CarDetailDto>(_carDal.GetByIdCarDetails(id), Messages.CarGetById);
         }
 
         [CacheAspect]
@@ -125,5 +125,7 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+
+
     }
 }

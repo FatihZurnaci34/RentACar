@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Entities.DTOs
@@ -16,6 +17,8 @@ namespace Entities.DTOs
         public string BrandName { get; set; }
         public string ColorName { get; set; }
         public decimal DailyPrice { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
 
     }
 }

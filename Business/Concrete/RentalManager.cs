@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -36,8 +37,14 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+
         public IResult Deliver(Rental rental)
         {
+            IResult result = BusinessRules.Run(CheckIfDeliverExists(rental.Id));
+            if (result !=null)
+            {
+                return null;
+            }
             _rentalDal.Deliver(rental);
             return new SuccessResult("Araç Teslim Edildi.");
         }
@@ -57,5 +64,16 @@ namespace Business.Concrete
             _rentalDal.Update(rental);
             return new SuccessResult();
         }
+
+        private IResult CheckIfDeliverExists(int id)
+        {
+            var result = _rentalDal.Get(x => x.Id == id);
+            if (result.ReturnDate!=null)
+            {
+                return new ErrorResult();
+            }
+            return new SuccessResult();
+
+        }   
     }
 }

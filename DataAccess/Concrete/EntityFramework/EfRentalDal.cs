@@ -17,7 +17,7 @@ namespace DataAccess.Concrete.EntityFramework
                 using (RentACarContext context = new RentACarContext())
                 {
                 Rental rentals = context.Rentals.Find(rental.Id);
-                rental.ReturnDate = DateTime.Now;
+                rentals.ReturnDate = DateTime.Now;
                 context.SaveChanges();
                 }
             
